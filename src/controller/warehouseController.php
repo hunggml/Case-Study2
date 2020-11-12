@@ -15,7 +15,7 @@ class warehouseController
         $this->warehouseModel = new WareHouseModel();
     }
 
-    public function show()
+    public function showWarehouse()
     {
         $warehouse = $this->warehouseModel->getAll();
         include_once 'src/view/listWarehouse.php';
@@ -64,7 +64,7 @@ class warehouseController
         }
     }
 
-    public function delete()
+    public function deleteWarehouse()
     {
         $id = $_REQUEST['id'];
         $this->warehouseModel->deleteWarehouse($id);

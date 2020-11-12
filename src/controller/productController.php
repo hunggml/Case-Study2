@@ -14,7 +14,7 @@ class productController
         $this->productModel = new ProductModel();
     }
 
-    public function show()
+    public function showProduct()
     {
         $product = $this->productModel->getAll();
         include_once 'src/view/listProduct.php';
@@ -37,13 +37,13 @@ class productController
             $path = 'uploads/' . $_FILES['image']['name'];
             move_uploaded_file($file, $path);
             $image = $path == 'uploads/' ? 'uploads/default.png' : $path;
+
             if ($name === "" || $type === "" || $status === "" || $price === "" || $quantity === "" || $date === "" || $warehouse === "") {
+                header('location:indexType.php');
+            } else {
+                $product = new Product($image, $name, $type, $status, $price, $quantity, $date, $warehouse);
+                $this->productModel->addProduct($product);
                 header('location:index.php');
-            }
-            else{
-            $product = new Product($image, $name, $type, $status, $price, $quantity, $date, $warehouse);
-            $this->productModel->addProduct($product);
-            header('location:index.php');
             }
         }
     }

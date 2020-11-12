@@ -1,28 +1,54 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
     header('location:loginAdmin.php');
 }
 ?>
 <?php
 require __DIR__ . '/vendor/autoload.php';
 $productController = new \PD\controller\productController();
+$typeController = new \PD\controller\typeController();
+$warehouseController = new \PD\controller\warehouseController();
 $page = $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : NULL;
 switch ($page) {
-    case 'add':
+    case 'addProduct':
         $productController->addProduct();
         break;
-    case 'edit':
+    case 'editProduct':
         $productController->editProduct();
         break;
-    case 'delete':
+    case 'deleteProduct':
         $productController->deleteProduct();
         break;
     case 'search':
         $productController->search();
         break;
+    case 'addType':
+        $typeController->addType();
+        break;
+    case 'editType':
+        $typeController->editType();
+        break;
+    case 'deleteType':
+        $typeController->deleteType();
+        break;
+    case 'showType':
+        $typeController->showType();
+        break;
+    case 'addWarehouse':
+        $warehouseController->addWarehouse();
+        break;
+    case 'editWarehouse':
+        $warehouseController->editWarehouse();
+        break;
+    case 'deleteWarehouse':
+        $warehouseController->deleteWarehouse();
+        break;
+    case 'showWarehouse':
+        $warehouseController->showWarehouse();
+        break;
     default:
-        $productController->show();
+        $productController->showProduct();
 }
 ?>
 <!doctype html>

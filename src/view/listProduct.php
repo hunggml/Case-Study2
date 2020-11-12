@@ -33,8 +33,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <a href="indexType.php" class="nav-item active nav-link">Product Type</a>
-            <a href="indexWarehouse" class="nav-item active nav-link">WareHouse</a>
+            <a href="index.php?page=showType" class="nav-item active nav-link">Product Type</a>
+            <a href="index.php?page=showWarehouse" class="nav-item active nav-link">WareHouse</a>
         </ul>
 
         <form action="index.php?page=search" method="post" class="form-inline my-2 mylg-0">
@@ -43,7 +43,8 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+            <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">Admin</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a href="loginAdmin.php" class="dropdown-item">Log Out</a>
             </div>
@@ -53,17 +54,23 @@
 <!------ Include the above in your HEAD tag ---------->
 <br>
 <style>
-   div{
-       border-radius: 10px;
-   }
-    #header{
-       margin: 0 auto;
+    div {
+        border-radius: 10px;
     }
-    #main{
+
+    #header {
+        margin: 0 auto;
+    }
+
+    #main {
         font-size: 40px;
         background-color: #0e84b5;
         border-radius: 10px;
         color: white;
+    }
+
+    .td {
+        color: black;
     }
 </style>
 <table id="header">
@@ -71,12 +78,13 @@
         <th id="main">LIST PRODUCT</th>
     </tr>
 </table>
+<br>
 <div class="container">
     <div class="row" style="background-color: azure;">
-        <a href="index.php?page=add" class="btn btn-primary btn-xs pull-right"><b>+</b> Add New Product</a>
+        <a href="index.php?page=addProduct" class="btn btn-primary btn-xs pull-right"><b>+</b> Add New Product</a>
         <table class="table table-hover table-striped">
             <thead>
-            <tr class="thead-dark" >
+            <tr class="thead-dark">
                 <th>STT</th>
                 <th>image</th>
                 <th>Product Name</th>
@@ -85,7 +93,7 @@
                 <th>Price($)</th>
                 <th>Quantity Stock</th>
                 <th>WareHouse Date</th>
-                <th>WareHouseID</th>
+                <th>WareHouse ID</th>
                 <th colspan="2">Action</th>
             </tr>
             </thead>
@@ -96,21 +104,56 @@
                 </tr>
             <?php else: ?>
                 <?php foreach ($product as $key => $value): ?>
-                    <tr >
+                    <tr>
                         <td><?php echo ++$key ?></td>
-                        <td type="button"  data-toggle="modal" data-target=".bd-example-modal-lg"><img  style="height: auto;width: 100px" src="<?php echo $value->getImage() ?>"></td>
+                        <td type="button" data-toggle="modal" data-target="#exampleModal<?php echo $key ?>"><img
+                                    style="height: auto;width: 100px" src="<?php echo $value->getImage() ?>"></td>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal<?php echo $key ?>" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel<?php echo $key ?>">Product
+                                            detail</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        tên là : <?php echo $value->getProductName() ?>
+                                        <br>
+                                        Trạng Thái : <?php echo $value->getStatusProduct() ?>
+                                        <br>
+                                        Buy Price : <?php echo $value->getPrice() ?>
+                                        <br>
+                                        Quantity : <?php echo $value->getQuantityStock() ?>
+                                        <br>
+                                        Date Add Product : <?php echo $value->getWarehouseDate() ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <td> <?php echo $value->getProductName() ?></td>
-                        <td><?php echo $value->getProductTypeId() ?></td>
+                        <td><a href="index.php?page=showType"><?php echo $value->getProductTypeId() ?></a></td>
                         <td><?php echo $value->getStatusProduct() ?></td>
                         <td><?php echo $value->getPrice() ?></td>
                         <td><?php echo $value->getQuantityStock() ?></td>
                         <td><?php echo $value->getWarehouseDate() ?></td>
-                        <td><?php echo $value->getWarehouseId() ?></td>
+                        <td><a href="index.php?page=showWarehouse"><?php echo $value->getWarehouseId() ?></a></td>
                         <td>
-                            <a href="index.php?page=edit&id=<?php echo $value->getId() ?>" class="btn btn-warning"><i
+                            <a href="index.php?page=editProduct&id=<?php echo $value->getId() ?>"
+                               class="btn btn-warning"><i
                                         class="fas fa-edit"></i></a>
                             <a onclick="return confirm('Do you want delete item ?')"
-                               href="index.php?page=delete&id=<?php echo $value->getId() ?>" class="btn btn-danger"><i
+                               href="index.php?page=deleteProduct&id=<?php echo $value->getId() ?>"
+                               class="btn btn-danger"><i
                                         class="fas fa-trash"></i></a>
                         </td>
                     </tr>
@@ -121,14 +164,5 @@
     </div>
 </div>
 <br>
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-        hello day la product detail....
-        </div>
-    </div>
-</div>
-
-
 </body>
 </html>

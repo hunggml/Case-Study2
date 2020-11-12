@@ -34,7 +34,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <a href="indexType.php" class="nav-item active nav-link">Product Type</a>
-            <a href="indexWarehouse" class="nav-item active nav-link">WareHouse</a>
+            <a href="indexWarehouse.php" class="nav-item active nav-link">WareHouse</a>
         </ul>
 
         <form action="index.php?page=search" method="post" class="form-inline my-2 mylg-0">
@@ -43,7 +43,8 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+            <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">Admin</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a href="#" class="dropdown-item">Log Out</a>
             </div>
@@ -51,7 +52,28 @@
     </div>
 </nav>
 <!------ Include the above in your HEAD tag ---------->
+<style>
+    div {
+        border-radius: 10px;
+    }
 
+    #header {
+        margin: 0 auto;
+    }
+
+    #main {
+        font-size: 40px;
+        background-color: #0e84b5;
+        border-radius: 10px;
+        color: white;
+    }
+</style>
+<table id="header">
+    <tr>
+        <th id="main">LIST PRODUCT</th>
+    </tr>
+</table>
+<br>
 <div class="container">
     <div class="row" style="background-color: azure;">
         <table class="table table-hover table-striped">
@@ -88,10 +110,10 @@
                         <td><?php echo $value->getWarehouseId() ?></td>
                         <td>
                             <a href="index.php?page=edit&id=<?php echo $value->getId() ?>" class="btn btn-warning"><i
-                                    class="fas fa-edit"></i></a>
+                                        class="fas fa-edit"></i></a>
                             <a onclick="return confirm('Do you want delete item ?')"
                                href="index.php?page=delete&id=<?php echo $value->getId() ?>" class="btn btn-danger"><i
-                                    class="fas fa-trash"></i></a>
+                                        class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

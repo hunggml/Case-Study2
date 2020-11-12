@@ -15,7 +15,7 @@ class typeController
         $this->typeModel = new TypeModel();
     }
 
-    public function show()
+    public function showType()
     {
         $type = $this->typeModel->getAll();
         include_once 'src/view/listType.php';

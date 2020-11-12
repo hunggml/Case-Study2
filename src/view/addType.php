@@ -18,7 +18,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a href="indexType.php" class="navbar-brand">Home Type</a>
+        <a href="index.php" class="navbar-brand">Home Type</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>

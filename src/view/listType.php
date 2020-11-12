@@ -33,14 +33,14 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <a href="indexType.php" class="nav-item active nav-link">Product Type</a>
-            <a href="indexWarehouse" class="nav-item active nav-link">WareHouse</a>
+            <a href="index.php?page=showType" class="nav-item active nav-link">Product Type</a>
+            <a href="index.php?page=showWarehouse" class="nav-item active nav-link">WareHouse</a>
         </ul>
 
         <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a href="#" class="dropdown-item">Log Out</a>
+                <a href="loginAdmin.php" class="dropdown-item">Log Out</a>
             </div>
         </li>
     </div>
@@ -69,7 +69,7 @@
 <br>
 <div class="container">
     <div class="row" style="background-color: azure;">
-        <a href="indexType.php?page=add" class="btn btn-primary btn-xs pull-right"><b>+</b> Add Type</a>
+        <a href="index.php?page=addType" class="btn btn-primary btn-xs pull-right"><b>+</b> Add Type</a>
         <table class="table table-hover table-striped">
             <thead>
             <tr class="thead-dark">
@@ -93,10 +93,10 @@
                         <td><?php echo $value->getProductType()?></td>
                         <td><?php echo $value->getTextDiscription()?></td>
                         <td>
-                            <a href="indexType.php?page=edit&id=<?php echo $value->getProductTypeId() ?>" class="btn btn-warning"><i
+                            <a href="index.php?page=editType&id=<?php echo $value->getProductTypeId() ?>" class="btn btn-warning"><i
                                         class="fas fa-edit"></i></a>
                             <a onclick="return confirm('Do you want delete item ?')"
-                               href="indexType.php?page=delete&id=<?php echo $value->getProductTypeId() ?>" class="btn btn-danger"><i
+                               href="index.php?page=deleteType&id=<?php echo $value->getProductTypeId() ?>" class="btn btn-danger"><i
                                         class="fas fa-trash"></i></a>
                         </td>
                     </tr>

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user'] = $_POST['user'];
         header('location:index.php');
     } else {
-        echo "tai khoan hoac mat khau sai";
+        echo "user or password is incorrect";
     }
 }
 ?>
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="forgot">
                     <a href="reset.html">Forgot password?</a>
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary" >Login</button>
 
             </form>
         </div>
